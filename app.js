@@ -11,6 +11,8 @@ const eraserDiv = document.querySelector('.eraser-div');
 
 const curColorDiv = document.querySelector('.use-current-color-div');
 
+const resetBoarDiv = document.querySelector('.reset-div');
+
 let boardSize = parseInt(gridSizeInput.value);
 let gridSize = gridContainer.offsetWidth/boardSize-2;
 let isDrawing = false;
@@ -79,6 +81,10 @@ eraserDiv.addEventListener('click',()=>{
 
 curColorDiv.addEventListener('click',()=>{
     gridColor = colorPicker.value;
+});
+
+resetBoarDiv.addEventListener('click',()=>{
+    resetBoard();
 });
 
 function resetBoard(){

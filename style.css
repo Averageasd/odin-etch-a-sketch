@@ -91,3 +91,15 @@
     padding-bottom:20px;
     border-radius: 5px;
 }
+
+.reset-div{
+    display: flex;
+    font-size: 24px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    background-color: #d111c1;
+}
