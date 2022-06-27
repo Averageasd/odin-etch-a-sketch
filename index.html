@@ -8,7 +8,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="grid-container"></div>
+    <div class="container">
+        <div class="grid-container"></div>
+        <div class="setting-container">
+            <div class="color-picker">
+                <p>Pick your color:</p>
+                <input type="color" id="color-input">
+            </div>
+            <div class="slider-container">
+                <div class="grid-size-customize">
+                    <input id="slider" type="range" min="1" max="100" value="16">
+                    <p id="size-display">16</p>
+                </div>
+                <div class="confirm-div">
+                    Confirm
+                </div>
+            </div>
+            <div class="eraser-div">
+                Use easer
+            </div>
+        </div>
+    </div>
+
+    
     <script src="app.js"></script>
 </body>
 </html>

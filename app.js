@@ -1,7 +1,14 @@
 const gridContainer = document.querySelector('.grid-container');
-let boardSize = 16;
+const gridSizeInput = document.querySelector('#slider');
+const sizeDisplay = document.querySelector('#size-display');
+const gridSizeConfirmBtn = document.querySelector('.confirm-div');
+
+const eraserDiv = document.querySelector('.eraser-div');
+
+let boardSize = parseInt(gridSizeInput.value);
 let gridSize = gridContainer.offsetWidth/boardSize-2;
 let isDrawing = false;
+let gridColor = 'red';
 console.log(gridContainer.offsetWidth);
 console.log(gridSize);
 
@@ -11,7 +18,7 @@ function setUpBoard(){
         gridRow.classList.add('grid-row');
         for (let j = 0;j<boardSize;j++){
             const cell = document.createElement('div');
-            cell.style.cssText = `width:${gridSize}px;height:${gridSize}px;border:1px black solid;background:gray;`;
+            cell.style.cssText = `width:${gridSize}px;height:${gridSize}px;border:1px lightgray solid;background:white;`;
             gridRow.appendChild(cell);
         }
         gridContainer.appendChild(gridRow);
@@ -27,12 +34,12 @@ function addHoverCellFeature(){
         for (let j = 0; j<cells.length;j++){
             cells[j].addEventListener('mouseover',()=>{
                 if (isDrawing){
-                    cells[j].style.background = 'red';
+                    cells[j].style.background = gridColor;
                 }
                 
             });
             cells[j].addEventListener('click',()=>{
-                cells[j].style.background = 'red';
+                cells[j].style.background = gridColor;
                 if (isDrawing){
                     isDrawing = false;
                 }
@@ -44,8 +51,34 @@ function addHoverCellFeature(){
     }
 }
 
+const colorPicker = document.querySelector('#color-input');
+colorPicker.addEventListener('input',()=>{
+    gridColor = colorPicker.value;
+});
 
+gridSizeInput.addEventListener('input',()=>{
+    sizeDisplay.textContent = gridSizeInput.value;
+});
 
+gridSizeConfirmBtn.addEventListener('click',()=>{
+    boardSize = parseInt(gridSizeInput.value);
+    gridSize = gridContainer.offsetWidth/boardSize-2;
+    isDrawing = false;
+
+    resetBoard();
+});
+
+eraserDiv.addEventListener('click',()=>{
+    gridColor = 'white';
+});
+
+function resetBoard(){
+    while (gridContainer.firstChild){
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+    setUpBoard();
+    addHoverCellFeature();
+}
 setUpBoard();
 addHoverCellFeature();
 
