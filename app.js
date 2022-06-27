@@ -9,6 +9,8 @@ const gridSizeConfirmBtn = document.querySelector('.confirm-div');
 // user can use this one to erase cells.
 const eraserDiv = document.querySelector('.eraser-div');
 
+const curColorDiv = document.querySelector('.use-current-color-div');
+
 let boardSize = parseInt(gridSizeInput.value);
 let gridSize = gridContainer.offsetWidth/boardSize-2;
 let isDrawing = false;
@@ -54,6 +56,7 @@ function addHoverCellFeature(){
 }
 
 const colorPicker = document.querySelector('#color-input');
+
 colorPicker.addEventListener('input',()=>{
     gridColor = colorPicker.value;
 });
@@ -72,6 +75,10 @@ gridSizeConfirmBtn.addEventListener('click',()=>{
 
 eraserDiv.addEventListener('click',()=>{
     gridColor = 'white';
+});
+
+curColorDiv.addEventListener('click',()=>{
+    gridColor = colorPicker.value;
 });
 
 function resetBoard(){
