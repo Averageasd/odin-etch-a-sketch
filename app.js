@@ -1,16 +1,18 @@
+// container that contains cells.
 const gridContainer = document.querySelector('.grid-container');
+
+// div where user can control slider and change size of grid
 const gridSizeInput = document.querySelector('#slider');
 const sizeDisplay = document.querySelector('#size-display');
 const gridSizeConfirmBtn = document.querySelector('.confirm-div');
 
+// user can use this one to erase cells.
 const eraserDiv = document.querySelector('.eraser-div');
 
 let boardSize = parseInt(gridSizeInput.value);
 let gridSize = gridContainer.offsetWidth/boardSize-2;
 let isDrawing = false;
 let gridColor = 'red';
-console.log(gridContainer.offsetWidth);
-console.log(gridSize);
 
 function setUpBoard(){
     for (let i = 0;i<boardSize;i++){
