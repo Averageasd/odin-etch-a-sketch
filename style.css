@@ -1,0 +1,13 @@
+.grid-container{
+    width: 1000px;
+    height: 1000px;
+}
+
+.grid-row{
+    display: inline-block;
+}
+
+.cell{
+    background-color: mediumaquamarine;
+    border: 1px solid black;
+}
