@@ -1,13 +1,8 @@
 .grid-container{
-    width: 1000px;
-    height: 1000px;
+    width: 800px;
+    height: 800px;
 }
 
 .grid-row{
-    display: inline-block;
-}
-
-.cell{
-    background-color: mediumaquamarine;
-    border: 1px solid black;
+    display: flex;
 }
