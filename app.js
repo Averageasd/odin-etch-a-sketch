@@ -13,10 +13,12 @@ const curColorDiv = document.querySelector('.use-current-color-div');
 
 const resetBoarDiv = document.querySelector('.reset-div');
 
+const colorPicker = document.querySelector('#color-input');
+
 let boardSize = parseInt(gridSizeInput.value);
 let gridSize = gridContainer.offsetWidth/boardSize-2;
 let isDrawing = false;
-let gridColor = 'red';
+let gridColor = colorPicker.value;
 
 function setUpBoard(){
     for (let i = 0;i<boardSize;i++){
@@ -31,33 +33,31 @@ function setUpBoard(){
         
     }
 }
-
 function addHoverCellFeature(){
     for (let i = 0; i<boardSize;i++){
         const cellRowContainer = gridContainer.children[i];
         const cells = cellRowContainer.children;
-        console.log(cells);
         for (let j = 0; j<cells.length;j++){
+            cells[j].addEventListener('click',()=>{
+                cells[j].style.background = gridColor;
+                if (!isDrawing){
+                    isDrawing = true;
+                }
+                else{
+                    isDrawing = false;
+                }
+            });
             cells[j].addEventListener('mouseover',()=>{
                 if (isDrawing){
+                    console.log('change color');
                     cells[j].style.background = gridColor;
                 }
                 
             });
-            cells[j].addEventListener('click',()=>{
-                cells[j].style.background = gridColor;
-                if (isDrawing){
-                    isDrawing = false;
-                }
-                else{
-                    isDrawing = true;
-                }
-            });
+            
         }
     }
 }
-
-const colorPicker = document.querySelector('#color-input');
 
 colorPicker.addEventListener('input',()=>{
     gridColor = colorPicker.value;
